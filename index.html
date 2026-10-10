@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173c32">
+  <meta name="description" content="Explore decoration, disposable, confectionery and gift packaging products at Ramchand Store.">
+  <title>Ramchand Store | Product Catalogue</title>
+  <style>
+    :root {
+      --green: #173c32;
+      --green-light: #eaf2ed;
+      --cream: #f8f7f2;
+      --ink: #202923;
+      --muted: #737b75;
+      --border: #e4e7e2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 20px 6%;
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand { font-size: 25px; font-weight: 800; letter-spacing: -.7px; }
+    .brand span { color: #d9c58e; }
+    .tagline { font-size: 12px; color: #d5e1da; margin-top: 5px; }
+
+    .hero {
+      max-width: 1180px;
+      margin: auto;
+      padding: 62px 6% 48px;
+    }
+
+    .eyebrow {
+      color: #587866;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 6vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      max-width: 680px;
+      margin: 16px 0;
+    }
+
+    .hero p { color: var(--muted); line-height: 1.7; max-width: 580px; }
+
+    .search-wrap { margin-top: 25px; max-width: 540px; }
+
+    input, select {
+      font: inherit;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      padding: 14px;
+      width: 100%;
+      outline-color: #759b83;
+    }
+
+    .search { padding: 16px; }
+
+    main { max-width: 1180px; margin: auto; padding: 0 6% 65px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    h2 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.6px; }
+    .subtext { color: var(--muted); font-size: 14px; }
+
+    .categories {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin: 20px 0 28px;
+    }
+
+    .category {
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: white;
+      color: var(--ink);
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .category.active { background: var(--green); color: white; border-color: var(--green); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      overflow: hidden;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: #edf0eb;
+    }
+
+    .placeholder {
+      aspect-ratio: 4 / 3;
+      display: grid;
+      place-items: center;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 46px;
+    }
+
+    .card-content { padding: 16px; }
+    .pill {
+      display: inline-block;
+      color: #54725e;
+      background: var(--green-light);
+      padding: 5px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .product-name { font-weight: 700; font-size: 17px; line-height: 1.4; }
+    .description { color: var(--muted); font-size: 13px; line-height: 1.5; margin-top: 8px; }
+    .price { font-size: 18px; font-weight: 800; margin-top: 15px; }
+    .price.missing { color: var(--muted); font-size: 13px; font-weight: 500; }
+
+    .enquire {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--green);
+      background: white;
+      color: var(--green);
+      border-radius: 9px;
+      padding: 11px;
+      margin-top: 14px;
+      text-align: center;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .enquire:hover { background: var(--green-light); }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 45px 15px;
+      text-align: center;
+      color: var(--muted);
+      background: white;
+      border-radius: 15px;
+    }
+
+    .note {
+      margin-top: 35px;
+      padding: 22px;
+      border-radius: 14px;
+      background: #edf1e9;
+      color: #43564a;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #122e26;
+      color: white;
+      padding: 28px 6%;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .card-content { padding: 12px; }
+      .product-name { font-size: 15px; }
+      .hero { padding-top: 42px; }
+      .brand { font-size: 22px; }
+    }
+
+    @media (max-width: 420px) {
+      .grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div>
+        <div class="brand">RAMCHAND <span>STORE</span></div>
+        <div class="tagline">Everyday essentials. Celebration supplies.</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Welcome to Ramchand Store</div>
+    <h1>Everything you need, all in one place.</h1>
+    <p>Explore our product catalogue for decoration, disposable items, confectionery and gift packaging. Contact us to ask about products and availability.</p>
+    <div class="search-wrap">
+      <input class="search" id="search" type="search" placeholder="Search products or categories..." aria-label="Search products">
+    </div>
+  </section>
+
+  <main>
+    <div class="section-heading">
+      <div>
+        <h2>Our catalogue</h2>
+        <div class="subtext" id="count">Browse our available categories and products.</div>
+      </div>
+    </div>
+
+    <div class="categories" id="categories"></div>
+    <div class="grid" id="products"></div>
+
+    <div class="note">
+      <strong>Looking for something specific?</strong><br>
+      Contact Ramchand Store to ask about products, bulk quantities and availability. Prices are displayed only when provided.
+    </div>
+  </main>
+
+  <footer>
+    <strong>RAMCHAND STORE</strong><br>
+    Decoration · Disposable Products · Confectionery · Gift Packaging<br>
+    <span>Product availability and prices may change.</span>
+  </footer>
+
+  <script>
+    // Demo products only. Replace these with your own products later.
+    // Prices can be left blank.
+    const products = [
+      {
+        name: "Decoration Supplies",
+        category: "Decoration",
+        description: "Explore decoration items for celebrations and events.",
+        price: "",
+        image: ""
+      },
+      {
+        name: "Disposable Products",
+        category: "Disposable",
+        description: "Everyday disposable products for shops and events.",
+        price: "",
+        image: ""
+      },
+      {
+        name: "Confectionery Items",
+        category: "Confectionery",
+        description: "Browse confectionery products and shop essentials.",
+        price: "",
+        image: ""
+      },
+      {
+        name: "Gift Bags",
+        category: "Gift Packaging",
+        description: "Gift bags and packaging for different occasions.",
+        price: "",
+        image: ""
+      },
+      {
+        name: "Party Balloons",
+        category: "Decoration",
+        description: "Balloons and party decoration supplies.",
+        price: "",
+        image: ""
+      },
+      {
+        name: "Paper Plates and Cups",
+        category: "Disposable",
+        description: "Disposable serving essentials.",
+        price: "",
+        image: ""
+      }
+    ];
+
+    let selectedCategory = "All";
+
+    const categoryIcons = {
+      "Decoration": "🎈",
+      "Disposable": "🥤",
+      "Confectionery": "🍬",
+      "Gift Packaging": "🎁",
+      "Other": "📦"
+    };
+
+    function renderCategories() {
+      const names = ["All", ...new Set(products.map(p => p.category))];
+      document.getElementById("categories").innerHTML = names.map(name =>
+        `<button class="category ${name === selectedCategory ? "active" : ""}"
+          data-category="${escapeHTML(name)}">${escapeHTML(name)}</button>`
+      ).join("");
+
+      document.querySelectorAll(".category").forEach(button => {
+        button.addEventListener("click", () => {
+          selectedCategory = button.dataset.category;
+          renderCategories();
+          renderProducts();
+        });
+      });
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function renderProducts() {
+      const query = document.getElementById("search").value.trim().toLowerCase();
+      const filtered = products.filter(p => {
+        const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+        const matchesSearch = `${p.name} ${p.category} ${p.description}`.toLowerCase().includes(query);
+        return matchesCategory && matchesSearch;
+      });
+
+      document.getElementById("count").textContent =
+        `${filtered.length} catalogue ${filtered.length === 1 ? "item" : "items"}`;
+
+      const container = document.getElementById("products");
+
+      if (!filtered.length) {
+        container.innerHTML = '<div class="empty">No matching products. Try another search.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(p => {
+        const image = p.image
+          ? `<img class="product-image" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}" loading="lazy">`
+          : `<div class="placeholder" aria-label="Product image not added">${categoryIcons[p.category] || "📦"}</div>`;
+
+        const price = p.price !== "" && p.price != null
+          ? `<div class="price">₹${escapeHTML(p.price)}</div>`
+          : `<div class="price missing">Price available on enquiry</div>`;
+
+        const message = encodeURIComponent(
+          `Hello Ramchand Store, I would like to enquire about: ${p.name}. Please share availability and price.`
+        );
+
+        return `<article class="card">
+          ${image}
+          <div class="card-content">
+            <span class="pill">${escapeHTML(p.category)}</span>
+            <div class="product-name">${escapeHTML(p.name)}</div>
+            <div class="description">${escapeHTML(p.description)}</div>
+            ${price}
+            <a class="enquire" href="https://wa.me/?text=${message}" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          </div>
+        </article>`;
+      }).join("");
+    }
+
+    document.getElementById("search").addEventListener("input", renderProducts);
+    renderCategories();
+    renderProducts();
+  </script>
+</body>
+</html>
